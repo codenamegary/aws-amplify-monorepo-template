@@ -11,10 +11,10 @@ applications:
       phases:
         preBuild:
           commands:
-            - yarn install
+            - cd app1 && yarn install
         build:
           commands:
-            - yarn run build
+            - cd app1 && yarn run build
       artifacts:
         baseDirectory: build
         files:
