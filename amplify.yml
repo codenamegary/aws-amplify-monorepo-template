@@ -1,20 +1,20 @@
 version: 1
 applications:
-  - appRoot: app1
-    backend:
+  - backend:
       phases:
         build:
           commands:
             - '# Execute Amplify CLI with the helper script'
-            - cd .. && amplifyPush --simple
+            - amplifyPush --simple
+  - appRoot: app1
     frontend:
       phases:
         preBuild:
           commands:
-            - cd app1 && yarn install
+            - yarn install
         build:
           commands:
-            - cd app1 && yarn run build
+            - yarn run build
       artifacts:
         baseDirectory: build
         files:
@@ -23,12 +23,6 @@ applications:
         paths:
           - node_modules/**/*
   - appRoot: app2
-    backend:
-      phases:
-        build:
-          commands:
-            - '# Execute Amplify CLI with the helper script'
-            - cd .. && amplifyPush --simple
     frontend:
       phases:
         preBuild:
